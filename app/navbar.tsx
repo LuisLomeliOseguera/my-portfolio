@@ -21,7 +21,7 @@ export default function Navbar() {
         top: 0,
         left: 0,
         right: 0,
-        background: '#ffffff',
+        background: 'var(--bg)',
         opacity: scrolled ? 0.65 : 1,
         transition: 'opacity 0.4s ease',
         zIndex: 1000,
@@ -96,5 +96,5 @@ export default function Navbar() {
 
 const navLink: React.CSSProperties = {
   textDecoration: 'none',
-  color: '#000000',
+  color: 'var(--fg)',
 }

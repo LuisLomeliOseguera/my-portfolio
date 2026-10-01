@@ -16,11 +16,26 @@ export default function RootLayout({
         className={bodyFont.className}
         style={{
           margin: 0,
-          background: '#ffffff',
-          color: '#000000',
+          background: 'var(--bg)',
+          color: 'var(--fg)',
           WebkitFontSmoothing: 'antialiased',
         }}
       >
+        <style>{`
+          :root {
+            --bg: #ffffff;
+            --fg: #000000;
+            --divider: rgba(0, 0, 0, 0.15);
+          }
+          @media (prefers-color-scheme: dark) {
+            :root {
+              --bg: #000000;
+              --fg: #ffffff;
+              --divider: rgba(255, 255, 255, 0.15);
+            }
+          }
+        `}</style>
+
         <Navbar />
 
         <div style={{ padding: '140px 60px 0 60px' }}>
@@ -54,5 +69,5 @@ export default function RootLayout({
 
 const navLink: React.CSSProperties = {
   textDecoration: 'none',
-  color: '#000000',
+  color: 'var(--fg)',
 }

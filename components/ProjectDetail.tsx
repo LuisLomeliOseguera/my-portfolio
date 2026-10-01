@@ -59,7 +59,8 @@ export default function ProjectDetail({ project }: { project: Project }) {
                 textShadow: '0 1px 6px rgba(0,0,0,0.85)',
               }}
             >
-              {credit.role}: {credit.name}
+              <span style={{ opacity: 0.7 }}>{credit.role}: </span>
+              <span style={{ fontSize: 15, fontWeight: 700 }}>{credit.name}</span>
             </div>
           ))}
         </div>

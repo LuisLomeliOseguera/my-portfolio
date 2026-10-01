@@ -39,7 +39,7 @@ export const projects: Project[] = [
     title: 'Music One',
     category: 'music',
     thumbnail: '/music1.jpg',
-    gumletVideoId: '6abda1f0160613e7d9be952e',
+    gumletVideoId: 'REPLACE_ME',
     screengrabs: grabSet('/music1'),
     credits: creditSet(),
   },

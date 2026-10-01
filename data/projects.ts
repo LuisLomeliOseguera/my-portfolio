@@ -53,9 +53,16 @@ function grabSet(prefix: string): Screengrab[] {
 
 export const projects: Project[] = [
   // --- Music ---
-  // music-2 is declared first so it lands at index 0 of the featured
-  // array — it's the only project with a real Gumlet video right now,
-  // and the homepage hero reel autoplays whatever is at index 0.
+  {
+    slug: 'music-1',
+    title: 'Music One',
+    category: 'music',
+    thumbnail: '/music1.jpg',
+    gumletVideoId: 'REPLACE_ME',
+    screengrabs: grabSet('/music1'),
+    credits: creditSet(),
+    featured: true,
+  },
   {
     slug: 'music-2',
     title: 'GT- Blow That Money',
@@ -68,16 +75,6 @@ export const projects: Project[] = [
       { role: 'DP', name: 'Luis Lomeli Oseguera' },
       { role: 'Colorist', name: 'TBD' },
     ],
-    featured: true,
-  },
-  {
-    slug: 'music-1',
-    title: 'Music One',
-    category: 'music',
-    thumbnail: '/music1.jpg',
-    gumletVideoId: 'REPLACE_ME',
-    screengrabs: grabSet('/music1'),
-    credits: creditSet(),
     featured: true,
   },
   { slug: 'music-3', title: 'Music Three', category: 'music', thumbnail: '/music3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music3'), credits: creditSet() },

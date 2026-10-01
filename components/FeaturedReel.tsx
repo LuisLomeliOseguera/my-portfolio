@@ -4,7 +4,14 @@ import { useState } from 'react'
 import type { Project } from '../data/projects'
 
 export default function FeaturedReel({ projects }: { projects: Project[] }) {
-  const [index, setIndex] = useState(0)
+  // Start on the first project with a real Gumlet video, not just index 0 —
+  // display/category order shouldn't be dictated by which project happens
+  // to have a working video yet. Falls back to index 0 if none are ready.
+  const initialIndex = Math.max(
+    0,
+    projects.findIndex((p) => p.gumletVideoId && p.gumletVideoId !== 'REPLACE_ME')
+  )
+  const [index, setIndex] = useState(initialIndex)
   const project = projects[index]
 
   const go = (dir: number) => {

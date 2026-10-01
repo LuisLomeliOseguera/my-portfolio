@@ -2,14 +2,17 @@ export type Credit = { role: string; name: string }
 
 export type Category = 'music' | 'commercial' | 'narrative'
 
+export type Screengrab = { src: string; width: number; aspect?: string }
+
 export type Project = {
   slug: string
   title: string
   category: Category
   thumbnail: string
   gumletVideoId: string
-  screengrabs: string[]
+  screengrabs: Screengrab[]
   credits: Credit[]
+  notes?: string[]
 }
 
 function creditSet(): Credit[] {
@@ -21,6 +24,14 @@ function creditSet(): Credit[] {
   ]
 }
 
+function grabSet(prefix: string): Screengrab[] {
+  return [
+    { src: `${prefix}-grab1.jpg`, width: 420, aspect: '16/9' },
+    { src: `${prefix}-grab2.jpg`, width: 220, aspect: '3/4' },
+    { src: `${prefix}-grab3.jpg`, width: 320, aspect: '1/1' },
+  ]
+}
+
 export const projects: Project[] = [
   // --- Music ---
   {
@@ -29,25 +40,25 @@ export const projects: Project[] = [
     category: 'music',
     thumbnail: '/music1.jpg',
     gumletVideoId: '6abda1f0160613e7d9be952e',
-    screengrabs: ['/music1-grab1.jpg', '/music1-grab2.jpg', '/music1-grab3.jpg'],
+    screengrabs: grabSet('/music1'),
     credits: creditSet(),
   },
-  { slug: 'music-2', title: 'Music Two', category: 'music', thumbnail: '/music2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/music2-grab1.jpg', '/music2-grab2.jpg', '/music2-grab3.jpg'], credits: creditSet() },
-  { slug: 'music-3', title: 'Music Three', category: 'music', thumbnail: '/music3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/music3-grab1.jpg', '/music3-grab2.jpg', '/music3-grab3.jpg'], credits: creditSet() },
-  { slug: 'music-4', title: 'Music Four', category: 'music', thumbnail: '/music4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/music4-grab1.jpg', '/music4-grab2.jpg', '/music4-grab3.jpg'], credits: creditSet() },
-  { slug: 'music-5', title: 'Music Five', category: 'music', thumbnail: '/music5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/music5-grab1.jpg', '/music5-grab2.jpg', '/music5-grab3.jpg'], credits: creditSet() },
+  { slug: 'music-2', title: 'Music Two', category: 'music', thumbnail: '/music2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music2'), credits: creditSet() },
+  { slug: 'music-3', title: 'Music Three', category: 'music', thumbnail: '/music3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music3'), credits: creditSet() },
+  { slug: 'music-4', title: 'Music Four', category: 'music', thumbnail: '/music4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music4'), credits: creditSet() },
+  { slug: 'music-5', title: 'Music Five', category: 'music', thumbnail: '/music5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music5'), credits: creditSet() },
 
   // --- Commercial ---
-  { slug: 'commercial-1', title: 'Commercial One', category: 'commercial', thumbnail: '/commercial1.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/commercial1-grab1.jpg', '/commercial1-grab2.jpg', '/commercial1-grab3.jpg'], credits: creditSet() },
-  { slug: 'commercial-2', title: 'Commercial Two', category: 'commercial', thumbnail: '/commercial2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/commercial2-grab1.jpg', '/commercial2-grab2.jpg', '/commercial2-grab3.jpg'], credits: creditSet() },
-  { slug: 'commercial-3', title: 'Commercial Three', category: 'commercial', thumbnail: '/commercial3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/commercial3-grab1.jpg', '/commercial3-grab2.jpg', '/commercial3-grab3.jpg'], credits: creditSet() },
-  { slug: 'commercial-4', title: 'Commercial Four', category: 'commercial', thumbnail: '/commercial4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/commercial4-grab1.jpg', '/commercial4-grab2.jpg', '/commercial4-grab3.jpg'], credits: creditSet() },
-  { slug: 'commercial-5', title: 'Commercial Five', category: 'commercial', thumbnail: '/commercial5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/commercial5-grab1.jpg', '/commercial5-grab2.jpg', '/commercial5-grab3.jpg'], credits: creditSet() },
+  { slug: 'commercial-1', title: 'Commercial One', category: 'commercial', thumbnail: '/commercial1.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/commercial1'), credits: creditSet() },
+  { slug: 'commercial-2', title: 'Commercial Two', category: 'commercial', thumbnail: '/commercial2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/commercial2'), credits: creditSet() },
+  { slug: 'commercial-3', title: 'Commercial Three', category: 'commercial', thumbnail: '/commercial3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/commercial3'), credits: creditSet() },
+  { slug: 'commercial-4', title: 'Commercial Four', category: 'commercial', thumbnail: '/commercial4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/commercial4'), credits: creditSet() },
+  { slug: 'commercial-5', title: 'Commercial Five', category: 'commercial', thumbnail: '/commercial5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/commercial5'), credits: creditSet() },
 
   // --- Narrative ---
-  { slug: 'narrative-1', title: 'Narrative One', category: 'narrative', thumbnail: '/narrative1.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/narrative1-grab1.jpg', '/narrative1-grab2.jpg', '/narrative1-grab3.jpg'], credits: creditSet() },
-  { slug: 'narrative-2', title: 'Narrative Two', category: 'narrative', thumbnail: '/narrative2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/narrative2-grab1.jpg', '/narrative2-grab2.jpg', '/narrative2-grab3.jpg'], credits: creditSet() },
-  { slug: 'narrative-3', title: 'Narrative Three', category: 'narrative', thumbnail: '/narrative3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/narrative3-grab1.jpg', '/narrative3-grab2.jpg', '/narrative3-grab3.jpg'], credits: creditSet() },
-  { slug: 'narrative-4', title: 'Narrative Four', category: 'narrative', thumbnail: '/narrative4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/narrative4-grab1.jpg', '/narrative4-grab2.jpg', '/narrative4-grab3.jpg'], credits: creditSet() },
-  { slug: 'narrative-5', title: 'Narrative Five', category: 'narrative', thumbnail: '/narrative5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: ['/narrative5-grab1.jpg', '/narrative5-grab2.jpg', '/narrative5-grab3.jpg'], credits: creditSet() },
+  { slug: 'narrative-1', title: 'Narrative One', category: 'narrative', thumbnail: '/narrative1.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative1'), credits: creditSet() },
+  { slug: 'narrative-2', title: 'Narrative Two', category: 'narrative', thumbnail: '/narrative2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative2'), credits: creditSet() },
+  { slug: 'narrative-3', title: 'Narrative Three', category: 'narrative', thumbnail: '/narrative3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative3'), credits: creditSet() },
+  { slug: 'narrative-4', title: 'Narrative Four', category: 'narrative', thumbnail: '/narrative4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative4'), credits: creditSet() },
+  { slug: 'narrative-5', title: 'Narrative Five', category: 'narrative', thumbnail: '/narrative5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative5'), credits: creditSet() },
 ]

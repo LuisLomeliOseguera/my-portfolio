@@ -4,12 +4,13 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Project } from '../data/projects'
+import { displayFont } from '../lib/fonts'
 
 export default function ProjectGrid({ projects }: { projects: Project[] }) {
   const [hovered, setHovered] = useState<string | null>(null)
 
   return (
-    <main style={{ display: 'flex', flexDirection: 'column', gap: 60 }}>
+    <main style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
       {projects.map((project) => {
         const isHovered = hovered === project.slug
         return (
@@ -26,7 +27,6 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
                 width: '100%',
                 aspectRatio: '16/9',
                 overflow: 'hidden',
-                borderRadius: 14,
                 cursor: 'pointer',
               }}
             >
@@ -55,10 +55,11 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
                 }}
               >
                 <span
+                  className={displayFont.className}
                   style={{
                     color: '#ffffff',
-                    fontSize: 14,
-                    letterSpacing: '0.2em',
+                    fontSize: 22,
+                    letterSpacing: '0.05em',
                     textTransform: 'uppercase',
                   }}
                 >

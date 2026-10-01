@@ -1,29 +1,18 @@
+import FeaturedReel from '../components/FeaturedReel'
+import ProjectGrid from '../components/ProjectGrid'
+import { projects } from '../data/projects'
+
 export default function Home() {
+  const featured = [
+    projects.find((p) => p.category === 'music')!,
+    projects.find((p) => p.category === 'commercial')!,
+    projects.find((p) => p.category === 'narrative')!,
+  ]
+
   return (
-    <main
-      style={{
-        minHeight: '60vh',
-      }}
-    >
-      {/* Home Content */}
-      <section
-        style={{
-          padding: '120px 0',
-          textAlign: 'center',
-        }}
-      >
-        <h2
-          style={{
-            fontWeight: 300,
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            fontSize: 18,
-            opacity: 0.7,
-          }}
-        >
-          Selected Works
-        </h2>
-      </section>
+    <main style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
+      <FeaturedReel projects={featured} />
+      <ProjectGrid projects={projects} />
     </main>
   )
 }

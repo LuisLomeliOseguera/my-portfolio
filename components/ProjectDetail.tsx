@@ -1,28 +1,32 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useRef } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import type { Project } from '../data/projects'
+import { displayFont } from '../lib/fonts'
+
+const labelStyle: React.CSSProperties = {
+  fontSize: 12,
+  letterSpacing: '0.15em',
+  textTransform: 'uppercase',
+  opacity: 0.55,
+}
 
 export default function ProjectDetail({ project }: { project: Project }) {
-  const [isMobile, setIsMobile] = useState(false)
+  const scrollerRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
+  const scrollByAmount = (dir: number) => {
+    scrollerRef.current?.scrollBy({ left: dir * 340, behavior: 'smooth' })
+  }
 
   return (
-    <main style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+    <main style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
       <div
         style={{
           position: 'relative',
           width: '100%',
           aspectRatio: '16/9',
-          borderRadius: 14,
-          overflow: 'hidden',
         }}
       >
         <iframe
@@ -36,73 +40,111 @@ export default function ProjectDetail({ project }: { project: Project }) {
         />
       </div>
 
-      <h1 style={{ fontSize: 20, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+      <h1
+        className={displayFont.className}
+        style={{
+          fontSize: 34,
+          lineHeight: 1.1,
+          textTransform: 'uppercase',
+          margin: 0,
+        }}
+      >
         {project.title}
       </h1>
 
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          gap: 40,
-          alignItems: 'flex-start',
-        }}
-      >
+      <div style={{ borderTop: '1px solid rgba(0,0,0,0.15)' }} />
+
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+          <span style={labelStyle}>Frame Grabs</span>
+          <div style={{ display: 'flex', gap: 10 }}>
+            <button
+              onClick={() => scrollByAmount(-1)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 16, opacity: 0.5 }}
+              aria-label="Scroll frame grabs left"
+            >
+              ‹
+            </button>
+            <button
+              onClick={() => scrollByAmount(1)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 16, opacity: 0.5 }}
+              aria-label="Scroll frame grabs right"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+
         <div
+          ref={scrollerRef}
           style={{
-            flex: 2,
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-            gap: 16,
-            width: '100%',
+            display: 'flex',
+            gap: 12,
+            overflowX: 'auto',
+            scrollSnapType: 'x proximity',
           }}
         >
-          {project.screengrabs.map((src, i) => (
+          {project.screengrabs.map((grab, i) => (
             <div
-              key={src}
-              style={{ position: 'relative', aspectRatio: '16/9', borderRadius: 10, overflow: 'hidden' }}
+              key={grab.src}
+              style={{
+                position: 'relative',
+                flex: '0 0 auto',
+                width: grab.width,
+                aspectRatio: grab.aspect ?? '16/9',
+                scrollSnapAlign: 'start',
+              }}
             >
               <Image
-                src={src}
+                src={grab.src}
                 alt={`${project.title} screengrab ${i + 1}`}
                 fill
-                sizes="(max-width: 768px) 100vw, 60vw"
+                sizes={`${grab.width}px`}
                 style={{ objectFit: 'cover' }}
               />
             </div>
           ))}
         </div>
+      </div>
 
-        <aside
-          style={{
-            flex: 1,
-            minWidth: 220,
-            position: isMobile ? 'static' : 'sticky',
-            top: 40,
-            width: '100%',
-          }}
-        >
-          <dl style={{ display: 'flex', flexDirection: 'column', gap: 10, margin: 0 }}>
-            {project.credits.map((credit) => (
-              <div
-                key={credit.role}
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  fontSize: 13,
-                  borderBottom: '1px solid rgba(0,0,0,0.1)',
-                  paddingBottom: 6,
-                }}
-              >
-                <dt style={{ textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.6 }}>
-                  {credit.role}
-                </dt>
-                <dd style={{ margin: 0 }}>{credit.name}</dd>
+      <div>
+        <div style={{ ...labelStyle, marginBottom: 14 }}>Credits</div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {project.credits.map((credit) => (
+            <div key={credit.role} style={{ fontSize: 14 }}>
+              {credit.role}: {credit.name}
+            </div>
+          ))}
+        </div>
+
+        {project.notes && project.notes.length > 0 && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 20 }}>
+            {project.notes.map((note, i) => (
+              <div key={i} style={{ fontSize: 14 }}>
+                {note}
               </div>
             ))}
-          </dl>
-        </aside>
+          </div>
+        )}
       </div>
+
+      <Link
+        href={`/${project.category}`}
+        style={{
+          display: 'inline-block',
+          alignSelf: 'flex-start',
+          background: '#555555',
+          color: '#ffffff',
+          textDecoration: 'none',
+          fontSize: 11,
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          padding: '12px 20px',
+        }}
+      >
+        Back to {project.category}
+      </Link>
     </main>
   )
 }

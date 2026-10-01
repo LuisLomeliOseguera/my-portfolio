@@ -103,8 +103,4 @@ export const projects: Project[] = [
 
   // --- Color ---
   { slug: 'color-1', title: 'Color One', category: 'color', thumbnail: '/color1.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color1'), credits: creditSet() },
-  { slug: 'color-2', title: 'Color Two', category: 'color', thumbnail: '/color2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color2'), credits: creditSet() },
-  { slug: 'color-3', title: 'Color Three', category: 'color', thumbnail: '/color3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color3'), credits: creditSet() },
-  { slug: 'color-4', title: 'Color Four', category: 'color', thumbnail: '/color4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color4'), credits: creditSet() },
-  { slug: 'color-5', title: 'Color Five', category: 'color', thumbnail: '/color5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color5'), credits: creditSet() },
 ]

@@ -39,7 +39,7 @@ function seededRandom(seed: string): () => number {
 }
 
 const WIDTH_POOL = [220, 260, 300, 340, 380, 420, 460, 500]
-const ASPECT_POOL = ['16/9', '3/4', '1/1', '4/3', '9/16']
+const ASPECT_POOL = ['16/9', '4/3', '1/1'] // landscape/square only — grabs come from horizontal video
 
 function grabSet(prefix: string): Screengrab[] {
   const rand = seededRandom(prefix)

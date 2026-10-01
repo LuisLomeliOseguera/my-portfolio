@@ -5,6 +5,17 @@ import Image from 'next/image'
 import type { Project } from '../data/projects'
 import { bodyFont } from '../lib/fonts'
 
+// Deterministic per-project pick between a wrapped "blocks" layout and a
+// full-width vertical "stack" layout, so each project is consistent across
+// rebuilds/reloads but varies project to project.
+function screengrabLayout(slug: string): 'blocks' | 'stack' {
+  let h = 0
+  for (let i = 0; i < slug.length; i++) {
+    h = (Math.imul(31, h) + slug.charCodeAt(i)) | 0
+  }
+  return (h >>> 0) % 2 === 0 ? 'blocks' : 'stack'
+}
+
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
@@ -66,13 +77,14 @@ export default function ProjectDetail({ project }: { project: Project }) {
 
       <div style={{ borderTop: '1px solid rgba(0,0,0,0.15)' }} />
 
-      <div>
+      {screengrabLayout(project.slug) === 'blocks' ? (
+        // Uniform edge-to-edge grid, like a contact sheet — every tile the
+        // same landscape aspect ratio, no gaps, columns based on count.
         <div
           style={{
-            display: 'flex',
-            gap: 12,
-            overflowX: 'auto',
-            scrollSnapType: 'x proximity',
+            display: 'grid',
+            gridTemplateColumns: `repeat(${Math.min(3, project.screengrabs.length)}, 1fr)`,
+            gap: 0,
           }}
         >
           {project.screengrabs.map((grab, i) => (
@@ -80,10 +92,32 @@ export default function ProjectDetail({ project }: { project: Project }) {
               key={grab.src}
               style={{
                 position: 'relative',
-                flex: '0 0 auto',
-                width: grab.width,
+                width: '100%',
+                aspectRatio: '16/9',
+              }}
+            >
+              <Image
+                src={grab.src}
+                alt={`${project.title} screengrab ${i + 1}`}
+                fill
+                sizes="33vw"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        // Full vertical run, one image after another, each at its own
+        // (randomized) width and aspect ratio for size variety.
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
+          {project.screengrabs.map((grab, i) => (
+            <div
+              key={grab.src}
+              style={{
+                position: 'relative',
+                width: '100%',
+                maxWidth: grab.width,
                 aspectRatio: grab.aspect ?? '16/9',
-                scrollSnapAlign: 'start',
               }}
             >
               <Image
@@ -96,7 +130,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
             </div>
           ))}
         </div>
-      </div>
+      )}
 
       {project.notes && project.notes.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>

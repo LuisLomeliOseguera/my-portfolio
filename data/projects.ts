@@ -45,7 +45,7 @@ export const projects: Project[] = [
     credits: creditSet(),
     featured: true,
   },
-  { slug: 'music-2', title: 'Music Two', category: 'music', thumbnail: '/music2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music2'), credits: creditSet(), featured: true },
+  { slug: 'music-2', title: 'Music Two', category: 'music', thumbnail: '/music2.jpg', gumletVideoId: '6abda1f0160613e7d9be952e', screengrabs: grabSet('/music2'), credits: creditSet(), featured: true },
   { slug: 'music-3', title: 'Music Three', category: 'music', thumbnail: '/music3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music3'), credits: creditSet() },
   { slug: 'music-4', title: 'Music Four', category: 'music', thumbnail: '/music4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music4'), credits: creditSet() },
   { slug: 'music-5', title: 'Music Five', category: 'music', thumbnail: '/music5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music5'), credits: creditSet() },

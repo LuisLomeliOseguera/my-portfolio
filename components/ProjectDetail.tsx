@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Project } from '../data/projects'
@@ -18,6 +19,19 @@ function screengrabLayout(slug: string): 'blocks' | 'stack' | 'masonry' {
 }
 
 export default function ProjectDetail({ project }: { project: Project }) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxIndex(null)
+      if (e.key === 'ArrowRight') setLightboxIndex((i) => (i === null ? null : (i + 1) % project.screengrabs.length))
+      if (e.key === 'ArrowLeft') setLightboxIndex((i) => (i === null ? null : (i - 1 + project.screengrabs.length) % project.screengrabs.length))
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [lightboxIndex, project.screengrabs.length])
+
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: 24 }}>
@@ -94,10 +108,12 @@ export default function ProjectDetail({ project }: { project: Project }) {
           {project.screengrabs.map((grab, i) => (
             <div
               key={grab.src}
+              onClick={() => setLightboxIndex(i)}
               style={{
                 position: 'relative',
                 width: '100%',
                 aspectRatio: '16/9',
+                cursor: 'pointer',
               }}
             >
               <Image
@@ -121,11 +137,13 @@ export default function ProjectDetail({ project }: { project: Project }) {
               {project.screengrabs.map((grab, i) => (
                 <div
                   key={grab.src}
+                  onClick={() => setLightboxIndex(i)}
                   style={{
                     position: 'relative',
                     width: '100%',
                     maxWidth: grab.width,
                     aspectRatio: grab.aspect ?? '16/9',
+                    cursor: 'pointer',
                   }}
                 >
                   <Image
@@ -148,12 +166,14 @@ export default function ProjectDetail({ project }: { project: Project }) {
             {project.screengrabs.map((grab, i) => (
               <div
                 key={grab.src}
+                onClick={() => setLightboxIndex(i)}
                 style={{
                   position: 'relative',
                   width: '100%',
                   aspectRatio: grab.aspect ?? '16/9',
                   breakInside: 'avoid',
                   marginBottom: 12,
+                  cursor: 'pointer',
                 }}
               >
                 <Image
@@ -195,6 +215,100 @@ export default function ProjectDetail({ project }: { project: Project }) {
       >
         Back to {project.category}
       </Link>
+
+      {lightboxIndex !== null && (
+        <div
+          onClick={() => setLightboxIndex(null)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.92)',
+            zIndex: 2000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <button
+            onClick={() => setLightboxIndex(null)}
+            aria-label="Close"
+            style={{
+              position: 'absolute',
+              top: 20,
+              right: 24,
+              background: 'none',
+              border: 'none',
+              color: '#ffffff',
+              fontSize: 28,
+              cursor: 'pointer',
+            }}
+          >
+            ✕
+          </button>
+
+          {project.screengrabs.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setLightboxIndex((i) => (i === null ? null : (i - 1 + project.screengrabs.length) % project.screengrabs.length))
+                }}
+                aria-label="Previous screengrab"
+                style={{
+                  position: 'absolute',
+                  left: 20,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  color: '#ffffff',
+                  fontSize: 36,
+                  cursor: 'pointer',
+                }}
+              >
+                ‹
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setLightboxIndex((i) => (i === null ? null : (i + 1) % project.screengrabs.length))
+                }}
+                aria-label="Next screengrab"
+                style={{
+                  position: 'absolute',
+                  right: 20,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  color: '#ffffff',
+                  fontSize: 36,
+                  cursor: 'pointer',
+                }}
+              >
+                ›
+              </button>
+            </>
+          )}
+
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: 'relative',
+              width: '90vw',
+              height: '90vh',
+            }}
+          >
+            <Image
+              src={project.screengrabs[lightboxIndex].src}
+              alt={`${project.title} screengrab ${lightboxIndex + 1} enlarged`}
+              fill
+              sizes="90vw"
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
+        </div>
+      )}
     </main>
   )
 }

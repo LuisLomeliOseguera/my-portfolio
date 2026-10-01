@@ -25,12 +25,30 @@ function creditSet(): Credit[] {
   ]
 }
 
+// Deterministic PRNG seeded from a string, so sizing is randomized per
+// project but stable across rebuilds (not reshuffling every dev restart).
+function seededRandom(seed: string): () => number {
+  let h = 0
+  for (let i = 0; i < seed.length; i++) {
+    h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0
+  }
+  return () => {
+    h = (Math.imul(h, 1664525) + 1013904223) | 0
+    return ((h >>> 0) % 10000) / 10000
+  }
+}
+
+const WIDTH_POOL = [220, 260, 300, 340, 380, 420, 460, 500]
+const ASPECT_POOL = ['16/9', '3/4', '1/1', '4/3', '9/16']
+
 function grabSet(prefix: string): Screengrab[] {
-  return [
-    { src: `${prefix}-grab1.jpg`, width: 420, aspect: '16/9' },
-    { src: `${prefix}-grab2.jpg`, width: 220, aspect: '3/4' },
-    { src: `${prefix}-grab3.jpg`, width: 320, aspect: '1/1' },
-  ]
+  const rand = seededRandom(prefix)
+  const count = 3 + Math.floor(rand() * 2) // 3 or 4 screengrabs per project
+  return Array.from({ length: count }, (_, i) => ({
+    src: `${prefix}-grab${i + 1}.jpg`,
+    width: WIDTH_POOL[Math.floor(rand() * WIDTH_POOL.length)],
+    aspect: ASPECT_POOL[Math.floor(rand() * ASPECT_POOL.length)],
+  }))
 }
 
 export const projects: Project[] = [

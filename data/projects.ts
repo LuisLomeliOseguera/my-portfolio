@@ -45,7 +45,7 @@ export const projects: Project[] = [
     credits: creditSet(),
     featured: true,
   },
-  { slug: 'music-2', title: 'Music Two', category: 'music', thumbnail: '/music2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music2'), credits: creditSet() },
+  { slug: 'music-2', title: 'Music Two', category: 'music', thumbnail: '/music2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music2'), credits: creditSet(), featured: true },
   { slug: 'music-3', title: 'Music Three', category: 'music', thumbnail: '/music3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music3'), credits: creditSet() },
   { slug: 'music-4', title: 'Music Four', category: 'music', thumbnail: '/music4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music4'), credits: creditSet() },
   { slug: 'music-5', title: 'Music Five', category: 'music', thumbnail: '/music5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/music5'), credits: creditSet() },
@@ -59,7 +59,7 @@ export const projects: Project[] = [
 
   // --- Narrative ---
   { slug: 'narrative-1', title: 'Narrative One', category: 'narrative', thumbnail: '/narrative1.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative1'), credits: creditSet(), featured: true },
-  { slug: 'narrative-2', title: 'Narrative Two', category: 'narrative', thumbnail: '/narrative2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative2'), credits: creditSet() },
+  { slug: 'narrative-2', title: 'Narrative Two', category: 'narrative', thumbnail: '/narrative2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative2'), credits: creditSet(), featured: true },
   { slug: 'narrative-3', title: 'Narrative Three', category: 'narrative', thumbnail: '/narrative3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative3'), credits: creditSet() },
   { slug: 'narrative-4', title: 'Narrative Four', category: 'narrative', thumbnail: '/narrative4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative4'), credits: creditSet() },
   { slug: 'narrative-5', title: 'Narrative Five', category: 'narrative', thumbnail: '/narrative5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative5'), credits: creditSet() },

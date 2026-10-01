@@ -8,21 +8,22 @@ export default function FeaturedStrip({ projects }: { projects: Project[] }) {
   return (
     <div
       style={{
-        display: 'flex',
-        flexWrap: 'wrap',
+        display: 'grid',
+        gridTemplateColumns: `repeat(${projects.length}, 1fr)`,
         gap: 16,
+        width: '100%',
       }}
     >
       {projects.map((project) => (
         <Link
           key={project.slug}
           href={`/project/${project.slug}`}
-          style={{ textDecoration: 'none', color: 'inherit', width: 160 }}
+          style={{ textDecoration: 'none', color: 'inherit' }}
         >
           <div
             style={{
               position: 'relative',
-              width: 160,
+              width: '100%',
               aspectRatio: '1/1',
               overflow: 'hidden',
             }}
@@ -31,7 +32,7 @@ export default function FeaturedStrip({ projects }: { projects: Project[] }) {
               src={project.thumbnail}
               alt={project.title}
               fill
-              sizes="160px"
+              sizes={`${Math.round(100 / projects.length)}vw`}
               style={{ objectFit: 'cover' }}
             />
           </div>

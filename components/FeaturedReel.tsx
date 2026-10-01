@@ -41,8 +41,8 @@ export default function FeaturedReel({ projects }: { projects: Project[] }) {
           <div
             className={displayFont.className}
             style={{
-              fontSize: 40,
-              textTransform: 'uppercase',
+              fontSize: 52,
+              fontStyle: 'italic',
               textShadow: '0 2px 16px rgba(0,0,0,0.6)',
             }}
           >

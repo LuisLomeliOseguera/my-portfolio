@@ -58,9 +58,9 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
                   className={displayFont.className}
                   style={{
                     color: '#ffffff',
-                    fontSize: 22,
-                    letterSpacing: '0.05em',
-                    textTransform: 'uppercase',
+                    fontSize: 28,
+                    fontStyle: 'italic',
+                    letterSpacing: '0.01em',
                   }}
                 >
                   {project.title}

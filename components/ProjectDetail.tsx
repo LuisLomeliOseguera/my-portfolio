@@ -43,9 +43,9 @@ export default function ProjectDetail({ project }: { project: Project }) {
       <h1
         className={displayFont.className}
         style={{
-          fontSize: 34,
+          fontSize: 48,
+          fontStyle: 'italic',
           lineHeight: 1.1,
-          textTransform: 'uppercase',
           margin: 0,
         }}
       >

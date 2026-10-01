@@ -1,4 +1,5 @@
 import Navbar from './navbar'
+import { bodyFont } from '../lib/fonts'
 
 export const metadata = {
   title: 'Luis Lomeli Oseguera – Cinematographer',
@@ -12,11 +13,11 @@ export default function RootLayout({
   return (
     <html>
       <body
+        className={bodyFont.className}
         style={{
           margin: 0,
           background: '#ffffff',
           color: '#000000',
-          fontFamily: 'system-ui, sans-serif',
           WebkitFontSmoothing: 'antialiased',
         }}
       >

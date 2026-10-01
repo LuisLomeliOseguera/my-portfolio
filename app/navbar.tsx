@@ -82,6 +82,7 @@ export default function Navbar() {
             <Link href="/music" style={navLink}>Music</Link>
             <Link href="/commercial" style={navLink}>Commercial</Link>
             <Link href="/documentary" style={navLink}>Documentary</Link>
+            <Link href="/color" style={navLink}>Color</Link>
           </div>
 
           <div style={{ justifySelf: 'end' }}>

@@ -1,6 +1,6 @@
 export type Credit = { role: string; name: string }
 
-export type Category = 'music' | 'commercial' | 'narrative' | 'documentary'
+export type Category = 'music' | 'commercial' | 'narrative' | 'documentary' | 'color'
 
 export type Screengrab = { src: string; width: number; aspect?: string }
 
@@ -100,4 +100,11 @@ export const projects: Project[] = [
   { slug: 'documentary-1', title: 'Documentary One', category: 'documentary', thumbnail: '/documentary1.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/documentary1'), credits: creditSet() },
   { slug: 'documentary-2', title: 'Documentary Two', category: 'documentary', thumbnail: '/documentary2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/documentary2'), credits: creditSet() },
   { slug: 'documentary-3', title: 'Documentary Three', category: 'documentary', thumbnail: '/documentary3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/documentary3'), credits: creditSet() },
+
+  // --- Color ---
+  { slug: 'color-1', title: 'Color One', category: 'color', thumbnail: '/color1.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color1'), credits: creditSet() },
+  { slug: 'color-2', title: 'Color Two', category: 'color', thumbnail: '/color2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color2'), credits: creditSet() },
+  { slug: 'color-3', title: 'Color Three', category: 'color', thumbnail: '/color3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color3'), credits: creditSet() },
+  { slug: 'color-4', title: 'Color Four', category: 'color', thumbnail: '/color4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color4'), credits: creditSet() },
+  { slug: 'color-5', title: 'Color Five', category: 'color', thumbnail: '/color5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/color5'), credits: creditSet() },
 ]

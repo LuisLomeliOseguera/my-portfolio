@@ -59,7 +59,6 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
                   style={{
                     color: '#ffffff',
                     fontSize: 24,
-                    fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em',
                   }}

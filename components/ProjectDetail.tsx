@@ -57,7 +57,6 @@ export default function ProjectDetail({ project }: { project: Project }) {
         className={bodyFont.className}
         style={{
           fontSize: 40,
-          fontWeight: 700,
           lineHeight: 1.1,
           margin: 0,
         }}

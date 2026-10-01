@@ -74,7 +74,6 @@ export const projects: Project[] = [
       { role: 'Director', name: 'Tremaine Edwards' },
       { role: 'DP', name: 'Luis Lomeli Oseguera' },
       { role: 'Colorist', name: 'TBD' },
-      { role: 'Editor', name: 'TBD' },
     ],
     featured: true,
   },

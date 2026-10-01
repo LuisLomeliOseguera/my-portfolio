@@ -7,6 +7,7 @@ import type { Project } from '../data/projects'
 export default function FeaturedStrip({ projects }: { projects: Project[] }) {
   return (
     <div
+      className="featured-strip"
       style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${projects.length}, 1fr)`,
@@ -17,6 +18,7 @@ export default function FeaturedStrip({ projects }: { projects: Project[] }) {
       {projects.map((project) => (
         <Link
           key={project.slug}
+          className="featured-strip-item"
           href={`/project/${project.slug}`}
           style={{ textDecoration: 'none', color: 'inherit' }}
         >

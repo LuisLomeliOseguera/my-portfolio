@@ -34,7 +34,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
 
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-end', gap: 24 }}>
+      <div className="project-header-row" style={{ display: 'flex', alignItems: 'flex-end', gap: 24 }}>
         <div
           style={{
             position: 'relative',
@@ -55,6 +55,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
         </div>
 
         <div
+          className="project-credits"
           style={{
             display: 'flex',
             flexDirection: 'column',

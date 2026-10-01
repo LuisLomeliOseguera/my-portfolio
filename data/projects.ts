@@ -61,7 +61,6 @@ export const projects: Project[] = [
     gumletVideoId: 'REPLACE_ME',
     screengrabs: grabSet('/music1'),
     credits: creditSet(),
-    featured: true,
   },
   {
     slug: 'music-2',

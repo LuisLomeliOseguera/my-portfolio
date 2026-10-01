@@ -27,7 +27,7 @@ export default function Navbar() {
         zIndex: 1000,
       }}
     >
-      <div style={{ padding: '18px 60px 12px 60px' }}>
+      <div className="navbar-inner" style={{ padding: '18px 60px 12px 60px' }}>
 
         {/* NAME BLOCK */}
         <div
@@ -64,10 +64,12 @@ export default function Navbar() {
 
         {/* NAV ROW */}
         <div
+          className="nav-row"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr auto 1fr',
             alignItems: 'center',
+            gap: 16,
             fontSize: 11,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
@@ -77,7 +79,7 @@ export default function Navbar() {
             <Link href="/" style={navLink}>Featured</Link>
           </div>
 
-          <div style={{ display: 'flex', gap: 28, justifySelf: 'center' }}>
+          <div className="nav-center-links" style={{ display: 'flex', gap: 28, justifySelf: 'center' }}>
             <Link href="/narrative" style={navLink}>Narrative</Link>
             <Link href="/music" style={navLink}>Music</Link>
             <Link href="/commercial" style={navLink}>Commercial</Link>

@@ -34,15 +34,60 @@ export default function RootLayout({
               --divider: rgba(255, 255, 255, 0.15);
             }
           }
+
+          /* Mobile layout overrides — inline styles need !important to be beaten */
+          @media (max-width: 640px) {
+            .page-shell {
+              padding: 110px 20px 0 20px !important;
+            }
+            .site-footer {
+              padding: 24px 20px !important;
+              flex-direction: column !important;
+              align-items: flex-start !important;
+              gap: 10px !important;
+            }
+            .navbar-inner {
+              padding: 14px 20px 10px 20px !important;
+            }
+            .nav-row {
+              display: flex !important;
+              flex-wrap: wrap !important;
+              justify-content: center !important;
+              gap: 10px 16px !important;
+            }
+            .nav-center-links {
+              flex-wrap: wrap !important;
+              justify-content: center !important;
+              gap: 10px 16px !important;
+            }
+            .featured-strip {
+              display: flex !important;
+              overflow-x: auto !important;
+              gap: 12px !important;
+            }
+            .featured-strip-item {
+              flex: 0 0 140px !important;
+              width: 140px !important;
+            }
+            .project-header-row {
+              flex-direction: column !important;
+              align-items: stretch !important;
+              gap: 16px !important;
+            }
+            .project-credits {
+              max-width: 100% !important;
+            }
+          }
         `}</style>
 
         <Navbar />
 
-        <div style={{ padding: '140px 60px 0 60px' }}>
+        <div className="page-shell" style={{ padding: '140px 60px 0 60px' }}>
           {children}
         </div>
 
         <footer
+          className="site-footer"
           style={{
             marginTop: 120,
             padding: '30px 60px',

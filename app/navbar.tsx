@@ -73,7 +73,7 @@ export default function Navbar() {
             textTransform: 'uppercase',
           }}
         >
-          <Link href="/" style={navLink}>Home</Link>
+          <Link href="/" style={navLink}>Featured</Link>
 
           <div style={{ display: 'flex', gap: 28 }}>
             <Link href="/narrative" style={navLink}>Narrative</Link>

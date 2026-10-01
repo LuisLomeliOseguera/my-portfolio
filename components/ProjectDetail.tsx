@@ -1,6 +1,5 @@
 'use client'
 
-import { useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Project } from '../data/projects'
@@ -14,12 +13,6 @@ const labelStyle: React.CSSProperties = {
 }
 
 export default function ProjectDetail({ project }: { project: Project }) {
-  const scrollerRef = useRef<HTMLDivElement>(null)
-
-  const scrollByAmount = (dir: number) => {
-    scrollerRef.current?.scrollBy({ left: dir * 340, behavior: 'smooth' })
-  }
-
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
       <div
@@ -55,27 +48,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
       <div style={{ borderTop: '1px solid rgba(0,0,0,0.15)' }} />
 
       <div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: 14 }}>
-          <div style={{ display: 'flex', gap: 10 }}>
-            <button
-              onClick={() => scrollByAmount(-1)}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 16, opacity: 0.5 }}
-              aria-label="Scroll frame grabs left"
-            >
-              ‹
-            </button>
-            <button
-              onClick={() => scrollByAmount(1)}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 16, opacity: 0.5 }}
-              aria-label="Scroll frame grabs right"
-            >
-              ›
-            </button>
-          </div>
-        </div>
-
         <div
-          ref={scrollerRef}
           style={{
             display: 'flex',
             gap: 12,

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Project } from '../data/projects'
-import { displayFont } from '../lib/fonts'
+import { bodyFont } from '../lib/fonts'
 
 export default function ProjectGrid({ projects }: { projects: Project[] }) {
   const [hovered, setHovered] = useState<string | null>(null)
@@ -55,12 +55,13 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
                 }}
               >
                 <span
-                  className={displayFont.className}
+                  className={bodyFont.className}
                   style={{
                     color: '#ffffff',
-                    fontSize: 28,
-                    fontStyle: 'italic',
-                    letterSpacing: '0.01em',
+                    fontSize: 24,
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
                   }}
                 >
                   {project.title}

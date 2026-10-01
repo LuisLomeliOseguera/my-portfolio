@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Project } from '../data/projects'
-import { displayFont } from '../lib/fonts'
+import { bodyFont } from '../lib/fonts'
 
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -54,10 +54,10 @@ export default function ProjectDetail({ project }: { project: Project }) {
       </div>
 
       <h1
-        className={displayFont.className}
+        className={bodyFont.className}
         style={{
-          fontSize: 48,
-          fontStyle: 'italic',
+          fontSize: 40,
+          fontWeight: 700,
           lineHeight: 1.1,
           margin: 0,
         }}

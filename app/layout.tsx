@@ -26,12 +26,14 @@ export default function RootLayout({
             --bg: #ffffff;
             --fg: #000000;
             --divider: rgba(0, 0, 0, 0.15);
+            --title: rgba(0, 0, 0, 0.82);
           }
           @media (prefers-color-scheme: dark) {
             :root {
               --bg: #000000;
               --fg: #ffffff;
               --divider: rgba(255, 255, 255, 0.15);
+              --title: rgba(255, 255, 255, 0.88);
             }
           }
 
@@ -60,11 +62,22 @@ export default function RootLayout({
             .navbar-top-row {
               margin-bottom: 6px !important;
             }
+            .nav-hamburger {
+              display: block !important;
+            }
             .nav-row {
-              flex-wrap: wrap !important;
-              justify-content: center !important;
-              gap: 8px 14px !important;
-              font-size: 10px !important;
+              display: none !important;
+            }
+            .nav-row.nav-row-open {
+              display: flex !important;
+              flex-direction: column !important;
+              align-items: center !important;
+              gap: 14px !important;
+              padding: 14px 0 6px 0 !important;
+              font-size: 11px !important;
+            }
+            .project-title {
+              font-size: 26px !important;
             }
             .featured-strip {
               display: flex !important;

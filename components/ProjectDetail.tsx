@@ -81,11 +81,12 @@ export default function ProjectDetail({ project }: { project: Project }) {
       </div>
 
       <h1
-        className={bodyFont.className}
+        className={`${bodyFont.className} project-title`}
         style={{
           fontSize: 40,
           lineHeight: 1.1,
           margin: 0,
+          color: 'var(--title)',
         }}
       >
         {project.title}

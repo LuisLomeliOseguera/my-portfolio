@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import type { Project } from '../data/projects'
 import { bodyFont } from '../lib/fonts'
@@ -41,6 +40,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
             flex: 1,
             minWidth: 0,
             aspectRatio: '16/9',
+            background: '#000',
           }}
         >
           <iframe
@@ -199,23 +199,6 @@ export default function ProjectDetail({ project }: { project: Project }) {
           ))}
         </div>
       )}
-
-      <Link
-        href={`/${project.category}`}
-        style={{
-          display: 'inline-block',
-          alignSelf: 'flex-start',
-          background: '#555555',
-          color: '#ffffff',
-          textDecoration: 'none',
-          fontSize: 11,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          padding: '12px 20px',
-        }}
-      >
-        Back to {project.category}
-      </Link>
 
       {lightboxIndex !== null && (
         <div

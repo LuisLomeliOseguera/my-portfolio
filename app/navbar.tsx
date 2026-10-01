@@ -40,6 +40,7 @@ export default function Navbar() {
           <div style={{ textAlign: 'right', lineHeight: 1.15 }}>
 
             <div
+              className="navbar-name"
               style={{
                 fontSize: 14,
                 letterSpacing: '0.15em',
@@ -49,6 +50,7 @@ export default function Navbar() {
             </div>
 
             <div
+              className="navbar-title"
               style={{
                 fontSize: 14,
                 textTransform: 'uppercase',

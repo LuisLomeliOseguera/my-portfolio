@@ -49,6 +49,14 @@ export default function RootLayout({
             .navbar-inner {
               padding: 14px 20px 10px 20px !important;
             }
+            .navbar-name {
+              font-size: 11px !important;
+              letter-spacing: 0.1em !important;
+            }
+            .navbar-title {
+              font-size: 10px !important;
+              letter-spacing: 0.16em !important;
+            }
             .nav-row {
               display: flex !important;
               flex-wrap: wrap !important;

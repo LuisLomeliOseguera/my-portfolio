@@ -47,7 +47,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'music-2',
-    title: 'Music Two',
+    title: 'GT- Blow That Money',
     category: 'music',
     thumbnail: '/music2.jpg',
     gumletVideoId: '6abda1f0160613e7d9be952e',

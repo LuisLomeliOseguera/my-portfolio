@@ -1,6 +1,6 @@
 export type Credit = { role: string; name: string }
 
-export type Category = 'music' | 'commercial' | 'narrative'
+export type Category = 'music' | 'commercial' | 'narrative' | 'documentary'
 
 export type Screengrab = { src: string; width: number; aspect?: string }
 
@@ -77,4 +77,9 @@ export const projects: Project[] = [
   { slug: 'narrative-3', title: 'Narrative Three', category: 'narrative', thumbnail: '/narrative3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative3'), credits: creditSet() },
   { slug: 'narrative-4', title: 'Narrative Four', category: 'narrative', thumbnail: '/narrative4.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative4'), credits: creditSet() },
   { slug: 'narrative-5', title: 'Narrative Five', category: 'narrative', thumbnail: '/narrative5.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/narrative5'), credits: creditSet() },
+
+  // --- Documentary ---
+  { slug: 'documentary-1', title: 'Documentary One', category: 'documentary', thumbnail: '/documentary1.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/documentary1'), credits: creditSet() },
+  { slug: 'documentary-2', title: 'Documentary Two', category: 'documentary', thumbnail: '/documentary2.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/documentary2'), credits: creditSet() },
+  { slug: 'documentary-3', title: 'Documentary Three', category: 'documentary', thumbnail: '/documentary3.jpg', gumletVideoId: 'REPLACE_ME', screengrabs: grabSet('/documentary3'), credits: creditSet() },
 ]

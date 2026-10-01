@@ -65,23 +65,28 @@ export default function Navbar() {
         {/* NAV ROW */}
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
+            display: 'grid',
+            gridTemplateColumns: '1fr auto 1fr',
             alignItems: 'center',
             fontSize: 11,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
           }}
         >
-          <Link href="/" style={navLink}>Featured</Link>
+          <div style={{ justifySelf: 'start' }}>
+            <Link href="/" style={navLink}>Featured</Link>
+          </div>
 
-          <div style={{ display: 'flex', gap: 28 }}>
+          <div style={{ display: 'flex', gap: 28, justifySelf: 'center' }}>
             <Link href="/narrative" style={navLink}>Narrative</Link>
             <Link href="/music" style={navLink}>Music</Link>
             <Link href="/commercial" style={navLink}>Commercial</Link>
+            <Link href="/documentary" style={navLink}>Documentary</Link>
           </div>
 
-          <Link href="/contact" style={navLink}>Contact</Link>
+          <div style={{ justifySelf: 'end' }}>
+            <Link href="/contact" style={navLink}>Contact</Link>
+          </div>
         </div>
 
       </div>

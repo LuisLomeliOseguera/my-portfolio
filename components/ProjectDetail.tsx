@@ -74,7 +74,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               }}
             >
               <span style={{ opacity: 0.7 }}>{credit.role}: </span>
-              <span style={{ fontSize: 15, fontWeight: 700 }}>{credit.name}</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--title)' }}>{credit.name}</span>
             </div>
           ))}
         </div>

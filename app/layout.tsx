@@ -77,7 +77,7 @@ export default function RootLayout({
               font-size: 11px !important;
             }
             .project-title {
-              font-size: 26px !important;
+              font-size: 20px !important;
             }
             .featured-strip {
               display: flex !important;

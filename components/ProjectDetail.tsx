@@ -55,8 +55,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
       <div style={{ borderTop: '1px solid rgba(0,0,0,0.15)' }} />
 
       <div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-          <span style={labelStyle}>Frame Grabs</span>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: 14 }}>
           <div style={{ display: 'flex', gap: 10 }}>
             <button
               onClick={() => scrollByAmount(-1)}

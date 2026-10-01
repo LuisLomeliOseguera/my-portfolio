@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { displayFont } from '../lib/fonts'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -41,11 +40,9 @@ export default function Navbar() {
           <div style={{ textAlign: 'right', lineHeight: 1.15 }}>
 
             <div
-              className={displayFont.className}
               style={{
-                fontSize: 24,
-                fontStyle: 'italic',
-                letterSpacing: '0.02em',
+                fontSize: 14,
+                letterSpacing: '0.15em',
               }}
             >
               Luis Lomeli Oseguera

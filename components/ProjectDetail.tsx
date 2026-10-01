@@ -20,33 +20,33 @@ function screengrabLayout(slug: string): 'blocks' | 'stack' | 'masonry' {
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          aspectRatio: '16/9',
-        }}
-      >
-        <iframe
-          loading="lazy"
-          title={`${project.title} video player`}
-          src={`https://play.gumlet.io/embed/${project.gumletVideoId}?background=false&autoplay=false&loop=false&disable_player_controls=false`}
-          style={{ border: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }}
-          referrerPolicy="origin"
-          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
-          allowFullScreen
-        />
+      <div style={{ display: 'flex', alignItems: 'flex-end', gap: 24 }}>
+        <div
+          style={{
+            position: 'relative',
+            flex: 1,
+            minWidth: 0,
+            aspectRatio: '16/9',
+          }}
+        >
+          <iframe
+            loading="lazy"
+            title={`${project.title} video player`}
+            src={`https://play.gumlet.io/embed/${project.gumletVideoId}?background=false&autoplay=false&loop=false&disable_player_controls=false`}
+            style={{ border: 'none', position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }}
+            referrerPolicy="origin"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
+            allowFullScreen
+          />
+        </div>
 
         <div
           style={{
-            position: 'absolute',
-            left: 0,
-            bottom: 0,
-            padding: '16px 20px',
             display: 'flex',
             flexDirection: 'column',
             gap: 4,
-            pointerEvents: 'none',
+            flexShrink: 0,
+            maxWidth: 220,
           }}
         >
           {project.credits.map((credit) => (
@@ -55,8 +55,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               style={{
                 fontSize: 12,
                 letterSpacing: '0.04em',
-                color: '#ffffff',
-                textShadow: '0 1px 6px rgba(0,0,0,0.85)',
+                color: 'var(--fg)',
               }}
             >
               <span style={{ opacity: 0.7 }}>{credit.role}: </span>

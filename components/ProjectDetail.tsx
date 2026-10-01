@@ -5,13 +5,6 @@ import Image from 'next/image'
 import type { Project } from '../data/projects'
 import { displayFont } from '../lib/fonts'
 
-const labelStyle: React.CSSProperties = {
-  fontSize: 12,
-  letterSpacing: '0.15em',
-  textTransform: 'uppercase',
-  opacity: 0.55,
-}
-
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
@@ -31,6 +24,33 @@ export default function ProjectDetail({ project }: { project: Project }) {
           allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;"
           allowFullScreen
         />
+
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            bottom: 0,
+            padding: '16px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 4,
+            pointerEvents: 'none',
+          }}
+        >
+          {project.credits.map((credit) => (
+            <div
+              key={credit.role}
+              style={{
+                fontSize: 12,
+                letterSpacing: '0.04em',
+                color: '#ffffff',
+                textShadow: '0 1px 6px rgba(0,0,0,0.85)',
+              }}
+            >
+              {credit.role}: {credit.name}
+            </div>
+          ))}
+        </div>
       </div>
 
       <h1
@@ -79,27 +99,15 @@ export default function ProjectDetail({ project }: { project: Project }) {
         </div>
       </div>
 
-      <div>
-        <div style={{ ...labelStyle, marginBottom: 14 }}>Credits</div>
-
+      {project.notes && project.notes.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {project.credits.map((credit) => (
-            <div key={credit.role} style={{ fontSize: 14 }}>
-              {credit.role}: {credit.name}
+          {project.notes.map((note, i) => (
+            <div key={i} style={{ fontSize: 14 }}>
+              {note}
             </div>
           ))}
         </div>
-
-        {project.notes && project.notes.length > 0 && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 20 }}>
-            {project.notes.map((note, i) => (
-              <div key={i} style={{ fontSize: 14 }}>
-                {note}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      )}
 
       <Link
         href={`/${project.category}`}

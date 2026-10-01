@@ -29,14 +29,23 @@ export default function Navbar() {
     >
       <div className="navbar-inner" style={{ padding: '18px 60px 12px 60px' }}>
 
-        {/* NAME BLOCK */}
+        {/* TOP ROW: Featured anchored top-left, name/title top-right */}
         <div
+          className="navbar-top-row"
           style={{
             display: 'flex',
-            justifyContent: 'flex-end',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            flexWrap: 'wrap',
+            gap: 10,
             marginBottom: 10,
+            fontSize: 11,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
           }}
         >
+          <Link href="/" style={navLink}>Featured</Link>
+
           <div style={{ textAlign: 'right', lineHeight: 1.15 }}>
 
             <div
@@ -68,30 +77,21 @@ export default function Navbar() {
         <div
           className="nav-row"
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr auto 1fr',
+            display: 'flex',
+            justifyContent: 'center',
             alignItems: 'center',
-            gap: 16,
+            gap: 28,
             fontSize: 11,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
           }}
         >
-          <div style={{ justifySelf: 'start' }}>
-            <Link href="/" style={navLink}>Featured</Link>
-          </div>
-
-          <div className="nav-center-links" style={{ display: 'flex', gap: 28, justifySelf: 'center' }}>
-            <Link href="/narrative" style={navLink}>Narrative</Link>
-            <Link href="/music" style={navLink}>Music</Link>
-            <Link href="/commercial" style={navLink}>Commercial</Link>
-            <Link href="/documentary" style={navLink}>Documentary</Link>
-            <Link href="/color" style={navLink}>Color</Link>
-          </div>
-
-          <div style={{ justifySelf: 'end' }}>
-            <Link href="/contact" style={navLink}>Contact</Link>
-          </div>
+          <Link href="/narrative" style={navLink}>Narrative</Link>
+          <Link href="/music" style={navLink}>Music</Link>
+          <Link href="/commercial" style={navLink}>Commercial</Link>
+          <Link href="/documentary" style={navLink}>Documentary</Link>
+          <Link href="/color" style={navLink}>Color</Link>
+          <Link href="/contact" style={navLink}>Contact</Link>
         </div>
 
       </div>

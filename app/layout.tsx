@@ -38,7 +38,7 @@ export default function RootLayout({
           /* Mobile layout overrides — inline styles need !important to be beaten */
           @media (max-width: 640px) {
             .page-shell {
-              padding: 110px 20px 0 20px !important;
+              padding: 95px 20px 0 20px !important;
             }
             .site-footer {
               padding: 24px 20px !important;
@@ -50,23 +50,21 @@ export default function RootLayout({
               padding: 14px 20px 10px 20px !important;
             }
             .navbar-name {
-              font-size: 11px !important;
-              letter-spacing: 0.1em !important;
+              font-size: 10px !important;
+              letter-spacing: 0.08em !important;
             }
             .navbar-title {
-              font-size: 10px !important;
-              letter-spacing: 0.16em !important;
+              font-size: 9px !important;
+              letter-spacing: 0.12em !important;
+            }
+            .navbar-top-row {
+              margin-bottom: 6px !important;
             }
             .nav-row {
-              display: flex !important;
               flex-wrap: wrap !important;
               justify-content: center !important;
-              gap: 10px 16px !important;
-            }
-            .nav-center-links {
-              flex-wrap: wrap !important;
-              justify-content: center !important;
-              gap: 10px 16px !important;
+              gap: 8px 14px !important;
+              font-size: 10px !important;
             }
             .featured-strip {
               display: flex !important;
